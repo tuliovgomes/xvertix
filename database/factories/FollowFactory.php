@@ -19,8 +19,6 @@ class FollowFactory extends Factory
         return [
             'follow_id' => \App\Models\User::factory(),
             'user_id' => \App\Models\User::factory(),
-            'created_at' => now(),
-            'updated_at' => now()
         ];
     }
 }
