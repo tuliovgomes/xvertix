@@ -11,7 +11,7 @@ class Post extends Model
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory, SoftDeletes;
 
-    protected $filable = [
+    protected $fillable = [
         'subject',
         'likes_count',
         'user_id',
