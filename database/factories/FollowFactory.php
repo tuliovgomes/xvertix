@@ -17,8 +17,8 @@ class FollowFactory extends Factory
     public function definition(): array
     {
         return [
-            'follower_id' => \App\Models\User::factory(),
-            'following_id' => \App\Models\User::factory(),
+            'follow_id' => \App\Models\User::factory(),
+            'user_id' => \App\Models\User::factory(),
             'created_at' => now(),
             'updated_at' => now()
         ];
