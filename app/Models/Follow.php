@@ -20,8 +20,8 @@ class Follow extends Model
      * @property \Illuminate\Support\Carbon|null $deleted_at
      */
     protected $fillable = [
-        'quantity',
-        'follower_id',
+        'user_id',
+        'follow_id',
     ];
 
 
