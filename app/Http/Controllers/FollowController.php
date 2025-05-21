@@ -12,7 +12,9 @@ class FollowController extends Controller
      */
     public function index()
     {
-        //
+      $followers = Follow::where('user_id', auth()->user()->id)->get();
+
+      return view('followers.index', ['followers' => $followers]);
     }
 
     /**
@@ -60,6 +62,8 @@ class FollowController extends Controller
      */
     public function destroy(Follow $follow)
     {
-        //
+        $follow->delete();
+
+        return redirect()->route('followers.index');
     }
 }

@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        Follow::factory()->count(1000)->create([
+        Follow::factory()->count(5)->create([
             'user_id' => $user->id
         ]);
 
