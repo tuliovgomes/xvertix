@@ -15,12 +15,13 @@
                                 <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-200">
                                     {{ \App\Models\User::find($post->user_id)?->name }}
                                 </h2>
-                                <p class="text-gray-600 dark:text-gray-400">{{ $post->created_at->diffForHumans() }}
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    {{ $post->created_at->diffForHumans() }}
                                 </p>
                             </div>
                             <div>
                                 <p class="text-gray-600 dark:text-gray-400">
-                                    a
+                                    -
                                 </p>
                             </div>
                         </div>
