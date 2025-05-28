@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Follow;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class FollowController extends Controller
 {
@@ -28,9 +29,22 @@ class FollowController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(User $user)
     {
-        //
+        $exists = Follow::where('user_id', auth()->user()->id)
+            ->where('follow_id', $user->id)
+            ->exists();
+
+        if ($exists) {
+            return redirect()->back()->with('error', 'You are already following this user.');
+        }
+
+        Follow::create([
+            'user_id' => auth()->user()->id,
+            'follow_id' => $user->id,
+        ]);
+
+        return redirect()->back()->with('success', 'You are now following this user.');
     }
 
     /**
