@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -9,9 +10,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -20,6 +19,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/followers', [FollowController::class, 'index'] )->name('followers.index');
     Route::post('/followers/trash/{follow}', [FollowController::class, 'destroy'] )->name('followers.trash');
+    Route::post('follow/{user}', [FollowController::class, 'store'])->name('follow.store');
 });
 
 require __DIR__.'/auth.php';
